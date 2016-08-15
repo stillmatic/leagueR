@@ -1,0 +1,17 @@
+Package: leagueR
+Type: Package
+Title: Interface to League of Legends/Riot API
+Version: 0.1.0
+Author: Chris Hua
+Maintainer: Chris Hua <chua@wharton.upenn.edu>
+Description: Simple wrapper to more easily interact with the
+    Riot Games developed API for League of Legends in R.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Imports:
+    stringr,
+    jsonlite,
+    httr,
+    dplyr
+RoxygenNote: 5.0.1
