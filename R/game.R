@@ -9,8 +9,9 @@
 #' @examples
 #' get_summoner_games(29400662)
 get_summoner_games <- function(id, region = "na") {
-  create_query('game/by-summoner' = paste0(id, '/recent'),
-               version = "v1.3") %>%
+  create_query('game/by-summoner' = paste0(id, '/recent/'),
+               region = region,
+               version = paste0(region, "/v1.3")) %>%
     jsonlite::fromJSON() %>%
     data.frame
 }

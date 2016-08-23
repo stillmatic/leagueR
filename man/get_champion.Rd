@@ -4,7 +4,7 @@
 \alias{get_champion}
 \title{Get champion information}
 \usage{
-get_champion(id)
+get_champion(id, region = "na")
 }
 \arguments{
 \item{id}{champion id}

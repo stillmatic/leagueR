@@ -4,7 +4,7 @@
 \alias{get_champions}
 \title{Get list of champions}
 \usage{
-get_champions()
+get_champions(region = "na")
 }
 \value{
 list of champions

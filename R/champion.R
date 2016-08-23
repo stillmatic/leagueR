@@ -5,8 +5,10 @@
 #'
 #' @examples
 #' str(get_champions())
-get_champions <- function() {
-  champs <- create_query('champion' = "", version = "v1.2") %>%
+get_champions <- function(region = "na") {
+  champs <- create_query('champion' = "",
+                         version = paste0(region, "/v1.2"),
+                         region = region) %>%
     jsonlite::fromJSON()
   champs[[1]]
 }
@@ -20,11 +22,13 @@ get_champions <- function() {
 #'
 #' @examples
 #' get_champion("32")
-get_champion <- function(id) {
+get_champion <- function(id, region = "na") {
   if(missingArg(id)) {
     return(get_champions())
   }
-  champ <- create_query('champion' = id, version = "v1.2") %>%
+  champ <- create_query('champion' = id,
+                        version = paste0(region, "/v1.2"),
+                        region = region) %>%
     jsonlite::fromJSON() %>% data.frame
   champ
 }

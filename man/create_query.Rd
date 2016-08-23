@@ -4,7 +4,7 @@
 \alias{create_query}
 \title{Create queries to the Riot API}
 \usage{
-create_query(..., param, version, region)
+create_query(..., api_name, param, version = NULL, region)
 }
 \arguments{
 \item{...}{named key-value pairs}

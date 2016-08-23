@@ -13,7 +13,7 @@ get_summoner_masteries <- function(ids, region = "na") {
   id_string <- stringr::str_c(ids, sep = ",", collapse = ",")
   create_query("summoner" = paste0(id_string, "/"),
                "masteries" = "",
-               version = "v1.4") %>%
+               version = paste0(region, "/v1.4")) %>%
     jsonlite::fromJSON()
 }
 
@@ -31,7 +31,7 @@ get_summoner_runes <- function(ids, region = "na") {
   id_string <- stringr::str_c(ids, sep = ",", collapse = ",")
   create_query("summoner" = paste0(id_string, "/"),
                "runes" = "",
-               version = "v1.4") %>%
+               version = paste0(region, "v1.4")) %>%
     jsonlite::fromJSON()
 }
 
@@ -49,7 +49,7 @@ get_summoner_name <- function(ids, region = "na") {
   id_string <- stringr::str_c(ids, sep = ",", collapse = ",")
   create_query("summoner" = paste0(id_string, "/"),
                "name" = "",
-               version = "v1.4") %>%
+               version = paste0(region, "v1.4")) %>%
     jsonlite::fromJSON()
 }
 
@@ -66,7 +66,7 @@ get_summoner_name <- function(ids, region = "na") {
 get_summoner_by_name <- function(ids, region = "na") {
   id_string <- stringr::str_c(ids, sep = ",", collapse = ",")
   create_query("summoner/by-name" = paste0(id_string, "/"),
-               version = "v1.4") %>%
+               version = file.path(region, "v1.4")) %>%
     jsonlite::fromJSON()
 }
 
@@ -83,7 +83,6 @@ get_summoner_by_name <- function(ids, region = "na") {
 get_summoner <- function(ids, region = "na") {
   id_string <- stringr::str_c(ids, sep = ",", collapse = ",")
   create_query("summoner" = paste0(id_string, "/"),
-               version = "v1.4") %>%
+               version = paste0(region, "v1.4")) %>%
     jsonlite::fromJSON()
 }
-

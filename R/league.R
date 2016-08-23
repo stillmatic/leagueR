@@ -1,3 +1,5 @@
+# TODO: abstract out region and version stuff
+
 #' Get leagues mapped by summoner ID for a given list of summoner IDs
 #'
 #' @param ids list of summoner id's
@@ -11,7 +13,8 @@
 get_league_by_summoner <- function(ids, region = "na") {
   id_string <- stringr::str_c(ids, sep = ",", collapse = ",")
   create_query("league/by-summoner" = id_string,
-               region = region, version = "v2.5") %>%
+               region = region,
+               version = paste0(region, "/v2.5")) %>%
     jsonlite::fromJSON()
 }
 
@@ -29,7 +32,8 @@ get_league_entries_by_summoner <- function(ids, region = "na") {
   id_string <- stringr::str_c(ids, sep = ",", collapse = ",")
   create_query("league/by-summoner" = id_string,
                "entry" = "",
-               region = region, version = "v2.5") %>%
+               region = region,
+               version =  paste0(region, "/v2.5")) %>%
     jsonlite::fromJSON()
 }
 
@@ -46,7 +50,8 @@ get_league_entries_by_summoner <- function(ids, region = "na") {
 get_league_by_team <- function(ids, region = "na") {
   id_string <- stringr::str_c(ids, sep = ",", collapse = ",")
   create_query("league/by-team" = id_string,
-               region = region, version = "v2.5") %>%
+               region = region,
+               version = paste0(region, "/v2.5")) %>%
     jsonlite::fromJSON()
 }
 
@@ -64,10 +69,10 @@ get_league_entry_by_team <- function(ids, region = "na") {
   id_string <- stringr::str_c(ids, sep = ",", collapse = ",")
   create_query("league/by-team" = id_string,
                "entry" = "",
-               region = region, version = "v2.5") %>%
+               region = region,
+               version = paste0(region, "/v2.5")) %>%
     jsonlite::fromJSON()
 }
-
 
 #' Get challenger tier leagues.
 #'
@@ -86,8 +91,9 @@ get_league_challenger <- function(type, region = "na") {
     stop("Invalid league type passed")
   }
   create_query("league" = "challenger/",
-               param = paste0("type=", type),
-               region = region, version = "v2.5") %>%
+               param = c("type", type),
+               region = region,
+               version = paste0(region, "/v2.5")) %>%
     jsonlite::fromJSON()
 }
 
@@ -108,7 +114,8 @@ get_league_master <- function(type, region = "na") {
     stop("Invalid league type passed")
   }
   create_query("league" = "master/",
-               param = paste0("type=", type),
-               region = region, version = "v2.5") %>%
+               param = c("type", type),
+               region = region,
+               version = paste0(region, "/v2.5")) %>%
     jsonlite::fromJSON()
 }
