@@ -4,12 +4,20 @@
 \alias{get_current_game}
 \title{Get current game information for the given summoner ID}
 \usage{
-get_current_game(platform_id, summoner_id)
+get_current_game(platform_id, summoner_id, region = "na")
 }
 \arguments{
-\item{summoner_id}{}
+\item{platform_id}{Region to Execute Against}
+
+\item{summoner_id}{The ID of the summoner.}
+}
+\value{
+current game info for given summoner
 }
 \description{
 Get current game information for the given summoner ID
+}
+\examples{
+
 }
 

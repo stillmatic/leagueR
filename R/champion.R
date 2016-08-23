@@ -23,7 +23,7 @@ get_champions <- function(region = "na") {
 #' @examples
 #' get_champion("32")
 get_champion <- function(id, region = "na") {
-  if(missingArg(id)) {
+  if(missing(id)) {
     return(get_champions())
   }
   champ <- create_query('champion' = id,

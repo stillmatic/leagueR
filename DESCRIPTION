@@ -1,7 +1,7 @@
 Package: leagueR
 Type: Package
 Title: Interface to League of Legends/Riot API
-Version: 0.1.0
+Version: 0.5.0
 Author: Chris Hua
 Maintainer: Chris Hua <chua@wharton.upenn.edu>
 Description: Simple wrapper to more easily interact with the

@@ -7,9 +7,15 @@
 get_id_from_name(summoner_name)
 }
 \arguments{
-\item{summoner_name}{}
+\item{summoner_name}{name of summoner to lookup}
+}
+\value{
+summoner id
 }
 \description{
 Get summoner ID from summoner name
+}
+\examples{
+get_id_from_name("dyrus")
 }
 

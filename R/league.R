@@ -93,7 +93,7 @@ get_league_challenger <- function(type, region = "na") {
   create_query("league" = "challenger/",
                param = c("type", type),
                region = region,
-               version = paste0(region, "/v2.5")) %>%
+               version = paste(region, "v2.5", sep ="/")) %>%
     jsonlite::fromJSON()
 }
 
@@ -101,7 +101,6 @@ get_league_challenger <- function(type, region = "na") {
 #'
 #' @param type one of "RANKED_SOLO_5x5", "RANKED_TEAM_5x5", "RANKED_TEAM_3x3"
 #' @param region  region to run query for
-#'
 #' @return data about master tier league in a queue
 #' @export
 #'

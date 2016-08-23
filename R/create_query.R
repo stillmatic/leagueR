@@ -13,7 +13,7 @@ create_query <- function(..., api_name, param, version = NULL, region) {
   postpends <- paste(names(args), args,
                      sep = "/", collapse ="/")
   postpends <- stringr::str_trim(postpends)
-  postpends <- gsub(postpends, pattern = "(\\/){2,}", replacement = "\\/")
+  # postpends <- gsub(postpends, pattern = "(\\/){2,}", replacement = "\\/")
 
   if(missing(region))
     region <- "na"
@@ -22,17 +22,18 @@ create_query <- function(..., api_name, param, version = NULL, region) {
 
   server <- paste0(region, ".api.pvp.net")
 
-  base_url <- file.path("https://", server, api_name)
+  base_url <- file.path("https:/", server, api_name, sep = "/")
   if(!is.null(version))
-    base_url <- file.path(base_url, version)
+    base_url <- file.path(base_url, version, sep = "/")
 
   api_param <- paste0("api_key" = get_riot_key())
-  final_url <- file.path(base_url, postpends)
+  final_url <- file.path(base_url, postpends, sep = "/")
   final_url <- urltools::param_set(final_url, key = "api_key", value = get_riot_key())
   if(!missing(param)) {
     final_url <- urltools::param_set(final_url, key = param[1], value = param[2])
   }
-
-  temp <- gsub(final_url, pattern = "(\\/){2}", replacement = "\\/")
-  temp
+  temp <- urltools::path(final_url)
+  urltools::path(final_url) <- gsub(temp,
+                              pattern = "(\\/){2,}", replacement = "/")
+  final_url
 }
