@@ -1,3 +1,3 @@
 .onLoad <- function(libname, pkgname) {
-  suppressPackageStartupMessages(requireNamespace(dplyr))
+  suppressPackageStartupMessages(requireNamespace('dplyr'))
 }
